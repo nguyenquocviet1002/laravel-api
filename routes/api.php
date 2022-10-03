@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HouseController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -26,6 +27,13 @@ Route::post('employees', [EmployeeController::class, 'create']);
 Route::put('employees/{id}', [EmployeeController::class, 'update']);
 Route::delete('employees/{id}', [EmployeeController::class, 'delete']);
 
+// 
+
+Route::get('house/', [HouseController::class, 'index']);
+// Route::get('house/{id?}', [HouseController::class, 'index']);
+// Route::post('employees', [EmployeeController::class, 'create']);
+// Route::put('employees/{id}', [EmployeeController::class, 'update']);
+// Route::delete('employees/{id}', [EmployeeController::class, 'delete']);
 // 
 Route::group([
     'middleware' => 'api',
