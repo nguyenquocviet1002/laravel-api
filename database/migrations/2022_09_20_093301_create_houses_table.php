@@ -17,7 +17,6 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address');
-            $table->boolean('status');
             $table->timestamps();
         });
     }

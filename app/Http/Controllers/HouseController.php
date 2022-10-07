@@ -37,7 +37,16 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $house = new House();
+            $house->name = $request->input('name');
+            $house->address = $request->input('address');
+
+            $house->save();
+            return $house;
+        }catch(Throwable $err){
+            return $err->getMessage();
+        }
     }
 
     /**
@@ -48,7 +57,7 @@ class HouseController extends Controller
      */
     public function show($id)
     {
-        //
+        return House::find($id);
     }
 
     /**
@@ -59,7 +68,8 @@ class HouseController extends Controller
      */
     public function edit($id)
     {
-        //
+        return House::findOrFail($id);
+         
     }
 
     /**
@@ -71,7 +81,20 @@ class HouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $house = House::find($id);
+            if($house){
+            $house->name = $request->input('name');
+            $house->address = $request->input('address');
+    
+            $house->save();
+            return $house;
+            }else{
+                return 'Data not found';
+            }
+        }catch(Throwable $err){
+            return $err->getMessage();
+        }
     }
 
     /**
@@ -82,6 +105,16 @@ class HouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $house = House::find($id);
+            if($house){
+                $house->delete();
+                return $house;
+            }else{
+                return 'Data not found';
+            }
+        }catch(Throwable $err){
+            return $err->getMessage();
+        }
     }
 }

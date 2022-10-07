@@ -30,10 +30,11 @@ Route::delete('employees/{id}', [EmployeeController::class, 'delete']);
 // 
 
 Route::get('house/', [HouseController::class, 'index']);
-// Route::get('house/{id?}', [HouseController::class, 'index']);
-// Route::post('employees', [EmployeeController::class, 'create']);
-// Route::put('employees/{id}', [EmployeeController::class, 'update']);
-// Route::delete('employees/{id}', [EmployeeController::class, 'delete']);
+Route::get('house/{id}', [HouseController::class, 'show']);
+Route::post('house', [HouseController::class, 'store']);
+Route::get('house/{id}/edit', [HouseController::class, 'edit']);
+Route::put('house/{id}', [HouseController::class, 'update']);
+Route::delete('house/{id}', [HouseController::class, 'destroy']);
 // 
 Route::group([
     'middleware' => 'api',
